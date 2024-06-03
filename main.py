@@ -60,7 +60,7 @@ def charger_data_clientes():
     airbus.connect()
     
     # Cantidad maxima de datos
-    max_clientes =  1000
+    max_clientes =  100000
     count = 1
     
     # Paquete de datos
@@ -134,8 +134,8 @@ def charger_ocupaciones():
                 break
         
         count_detalles += 1
-        barra_carga(count_detalles,300,35)
-        if count_detalles == 300:
+        barra_carga(count_detalles,rows_detalles,35)
+        if count_detalles == rows_detalles:
             break
         pass
     print("Termino")
