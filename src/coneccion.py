@@ -186,15 +186,10 @@ class db:
     def insert_ocupaciones(self,id,detalles_id,cliente_id):
         try:
             # Checar que cliente no se repita
-            self.cursor.execute(f"select * from ocupaciones where cve_detalle_vuelos = {detalles_id} and cve_clientes = {cliente_id}")
-            client_exist = self.cursor.fetchone()
-            if not client_exist:
-                self.cursor.execute(f"""
-                                    INSERT INTO ocupaciones(cve_ocupaciones,cve_detalle_vuelos,cve_clientes) VALUES ({id},{detalles_id},{cliente_id});
-                                    """)
-                self.cursor.commit()
-                return True
-            return False
+            self.cursor.execute(f"""
+                        INSERT INTO ocupaciones(cve_ocupaciones,cve_detalle_vuelos,cve_clientes) VALUES ({id},{detalles_id},{cliente_id});
+                                """)
+            self.cursor.commit()
         except pyodbc.Error as e:
             print("Error" + e)
             return False

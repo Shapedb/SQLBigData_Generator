@@ -1,5 +1,6 @@
 from src.coneccion import db
 from tools.barra_progreso import barra_carga
+from tools.generate_array import generar_array_sin_repeticion
 import model.airbus380_cad as table
 import random
 
@@ -117,19 +118,20 @@ def charger_ocupaciones():
     count_detalles = 1
     count_ocuapciones = 1
     
+    
+
+    
     while True:
-        count_capacidad = 1
         capacidad =  airbus.return_capacidad_detalles(count_detalles)
-        capacidad =  capacidad  + 1
-        while True:
-            id_cliente = random.randrange(1, rows_clientes + 1)
-            check_ocupaciones = airbus.insert_ocupaciones(count_ocuapciones,count_detalles,id_cliente)
-            if check_ocupaciones:
-                count_ocuapciones += 1
-                count_capacidad += 1
-            if capacidad == count_capacidad:
-                break
         
+        
+        clientes_paquete = generar_array_sin_repeticion(rows_clientes,capacidad)
+        
+        for _, data in enumerate(clientes_paquete):
+            id_cliente = random.randrange(1, rows_clientes + 1)
+            airbus.insert_ocupaciones(count_ocuapciones,count_detalles,id_cliente)
+            count_ocuapciones += 1
+                 
         count_detalles += 1
         barra_carga(count_detalles,rows_detalles,35)
         if count_detalles == rows_detalles:
