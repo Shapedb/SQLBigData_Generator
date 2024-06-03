@@ -81,7 +81,6 @@ def charger_data_clientes():
         barra_carga(count,max_clientes,35)
         if count >  max_clientes:
             break  
-    print(count)
     airbus.close_conection()
     pass
 
@@ -94,8 +93,6 @@ def charger_detalles_vuelo():
     count = 0 # ID
     capacidad =  [350,400,450,500] # Capacidad
     vuelo_id =  airbus.random_vuelo()
-    
-    print(vuelo_id)
     
     while True:
         # Vuelo Random de Mexico
