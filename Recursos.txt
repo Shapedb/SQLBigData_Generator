@@ -1,3 +1,7 @@
 # Generar las horas en punto con Python
 horas_en_punto = [f"{hora:02d}:00" for hora in range(24)]
 print(horas_en_punto)
+
+
+# Revisar  que existe una base de datos
+SELECT database_id FROM sys.databases WHERE Name = 'datos'
