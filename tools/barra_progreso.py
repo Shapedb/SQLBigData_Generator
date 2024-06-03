@@ -5,4 +5,4 @@ def barra_carga(part, total, tamano = 30):
     completed = int(frac * tamano)
     missing = tamano - completed
     bar = f"[{'*'*completed}{'-'*missing}]{frac:.2%}"
-    print(bar)
+    print(bar, end='\r')
